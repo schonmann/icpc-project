@@ -2,6 +2,8 @@
  *  HackerRank
  *  Problem: Sherlock and Cost
  *  Type: Dynamic Programming
+ *  Time Complexity: O(N)
+ *  Space Complexity: O(1)
  */
 
 #include <cmath>
