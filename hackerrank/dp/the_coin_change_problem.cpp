@@ -25,8 +25,8 @@ unsigned long long int coinChange( int S[], int m, int n ) {
 int main(void) {
     int n,m;
     cin >> n >> m;
-    int COINS[m];
-    for(int i = 0; i < m; i++) cin >> COINS[i];
-    cout << coinChange(COINS, m, n) << endl;
+    int coins[m];
+    for(int i = 0; i < m; i++) cin >> coins[i];
+    cout << coinChange(coins, m, n) << endl;
     return 0;
 }
