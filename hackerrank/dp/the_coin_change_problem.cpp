@@ -2,6 +2,8 @@
  *  HackerRank
  *  Problem: The Coin Change Problem
  *  Type: Dynamic Programming
+ *  Time Complexity: O(M*N)
+ *  Space Complexity: O(N)
  */
  
 #include <iostream>
