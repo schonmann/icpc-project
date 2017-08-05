@@ -5,22 +5,6 @@
 
 using namespace std;
 
-class Edge {
-	public:
-		Edge(int u, int v) {
-			this->u = u;
-			this->v = v;
-		};
-		int getU() {
-			return this->u;
-		};
-		int getV() {
-			return this->v;
-		};
-	private:
-		int u,v;
-};
-
 class BitwiseIndex {
 	private:
 		int idx; //Indice traduzido.
@@ -64,8 +48,7 @@ class BitGraph {
 			for(int i = 0; i < this->Graph.size(); i++) this->Graph[i].clear();
 			this->Graph.clear();
 		};
-		void AddEdge(Edge edge) {
-			int u = edge.getU(); int v = edge.getV();
+		void AddEdge(int u, int v) {
 			assert(u < this->n && v < this->n);
 
 			/* Traduz indice da coluna para indice dentro do byte. */
@@ -76,8 +59,7 @@ class BitGraph {
 
 			this->Graph[u][tv.getIdx()] |= tv.getOffset();
 		};
-		void RemoveEdge(Edge edge) {
-			int u = edge.getU(); int v = edge.getV();
+		void RemoveEdge(int u, int v) {
 			assert(u < this->n && v < this->n);
 
 			/* Traduz indice da coluna para indice dentro do byte. */
@@ -103,12 +85,12 @@ class BitGraph {
 
 int main(void) {
 	BitGraph G(10);
-	G.AddEdge(Edge(0,4));
-	G.AddEdge(Edge(0,0));
-	G.AddEdge(Edge(0,3));
-	G.AddEdge(Edge(0,2));
-	G.AddEdge(Edge(0,1));
-	G.AddEdge(Edge(0,9));
+	G.AddEdge(0,4);
+	G.AddEdge(0,0);
+	G.AddEdge(0,3);
+	G.AddEdge(0,2);
+	G.AddEdge(0,1);
+	G.AddEdge(0,9);
 	G.PrintGraph();
 	return 0;
 }
