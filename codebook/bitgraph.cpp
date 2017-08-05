@@ -48,6 +48,13 @@ class BitGraph {
 			for(int i = 0; i < this->Graph.size(); i++) this->Graph[i].clear();
 			this->Graph.clear();
 		};
+		bool HasEdge(int u, int v) {
+			assert(u < this->n && v < this->n);
+
+			BitwiseIndex tv = BitwiseIndex(v);
+
+			return this->Graph[u][tv.getIdx()] & tv.getOffset();
+		};
 		void AddEdge(int u, int v) {
 			assert(u < this->n && v < this->n);
 
@@ -92,5 +99,6 @@ int main(void) {
 	G.AddEdge(0,1);
 	G.AddEdge(0,9);
 	G.PrintGraph();
+	
 	return 0;
 }
