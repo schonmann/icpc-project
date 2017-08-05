@@ -1,3 +1,8 @@
+/* BitGraph  */
+/*	     */
+/* Implementation making use of bitwise operations in order to achieve better space complexity. */
+/* Up 8 times less memory usage than a usual simple graph implementation. */
+
 #include <iostream>
 #include <vector>
 #include <cmath>
