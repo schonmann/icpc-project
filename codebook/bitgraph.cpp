@@ -1,7 +1,7 @@
 /* BitGraph  */
 /*	     */
-/* Implementation making use of bitwise operations in order to achieve better space complexity. */
-/* Up 8 times less memory usage than a usual simple graph implementation. */
+/* Implementation making use of bitwise operations in order to spend much less memory. */
+/* Up to 8 times less memory usage than an usual simple graph implementation. */
 
 #include <iostream>
 #include <vector>
@@ -17,27 +17,31 @@ class BitwiseIndex {
 
 	public:
 		BitwiseIndex(int realIndex) {
-			this->idx = floor(realIndex/8.0);
-			this->byteOffset = 0x01 << (realIndex%8);
-		};
+			this->idx = realIndex/8;
+			this->byteOffset = 0x1 << (realIndex%8);
+		}
 		int getIdx() {
 			return this->idx;
-		};
+		}
 		char getOffset() {
 			return this->byteOffset;
-		};
+		}
 };
 
 class BitGraph {
 	private:
 		int n;
+		bool directed;
 		vector< vector<char> > Graph;
 		void resizeGraph(int n) {
 			this->n = n;
 			this->Graph.resize(n);
 			for(int i = 0; i < this->Graph.size(); i++) this->Graph[i].resize(ceil(n/8.0));
-		};
-
+		}
+		void init(int n, bool directed) {
+			this->resizeGraph(n);
+			this->directed = directed;
+		}
 	public:
 		void ClearGraph(){
 			for(int i = 0; i < this->Graph.size(); i++) {
@@ -45,43 +49,53 @@ class BitGraph {
 					this->Graph[i][j] = 0;
 				}
 			}
-		};
+		}
 		BitGraph(int n) {
-			this->resizeGraph(n);
-		};
+			this->init(n, true);
+		}
+		BitGraph(int n, bool directed) {
+			this->init(n, directed);
+		}
 		~BitGraph() {
 			for(int i = 0; i < this->Graph.size(); i++) this->Graph[i].clear();
 			this->Graph.clear();
-		};
+		}
 		bool HasEdge(int u, int v) {
 			assert(u < this->n && v < this->n);
 
 			BitwiseIndex tv = BitwiseIndex(v);
+			if (this->directed)
+				return this->Graph[u][tv.getIdx()] & tv.getOffset();
 
-			return this->Graph[u][tv.getIdx()] & tv.getOffset();
-		};
+			BitwiseIndex tu = BitwiseIndex(u);
+			return this->Graph[u][tv.getIdx()] & tv.getOffset() || this->Graph[v][tu.getIdx()] & tu.getOffset();
+		}
 		void AddEdge(int u, int v) {
 			assert(u < this->n && v < this->n);
 
 			/* Traduz indice da coluna para indice dentro do byte. */
-
 			BitwiseIndex tv = BitwiseIndex(v);
-
 			/* Faz bitwise OR com o offset, adicionando '1' na posicao correspondente do byte. */
-
 			this->Graph[u][tv.getIdx()] |= tv.getOffset();
-		};
+
+			if (!this->directed) {
+				BitwiseIndex tu = BitwiseIndex(u);
+				this->Graph[v][tu.getIdx()] |= tu.getOffset();				
+			}
+		}
 		void RemoveEdge(int u, int v) {
 			assert(u < this->n && v < this->n);
 
 			/* Traduz indice da coluna para indice dentro do byte. */
-
 			BitwiseIndex tv = BitwiseIndex(v);
-
 			/* Faz bitwise AND com o complemento do offset, removendo o '1' da posicao correspondente no byte */
-
 			this->Graph[u][tv.getIdx()] &= ~tv.getOffset();
-		};
+
+			if (!this->directed) {
+				BitwiseIndex tu = BitwiseIndex(u);
+				this->Graph[v][tu.getIdx()] &= ~tu.getOffset();				
+			}
+		}
 
 		void PrintGraph() {
 			for(int i = 0; i < this->Graph.size(); i++) {
