@@ -64,11 +64,7 @@ class BitGraph {
 			assert(u < this->n && v < this->n);
 
 			BitwiseIndex tv = BitwiseIndex(v);
-			if (this->directed)
-				return this->Graph[u][tv.getIdx()] & tv.getOffset();
-
-			BitwiseIndex tu = BitwiseIndex(u);
-			return this->Graph[u][tv.getIdx()] & tv.getOffset() || this->Graph[v][tu.getIdx()] & tu.getOffset();
+			return this->Graph[u][tv.getIdx()] & tv.getOffset();
 		}
 		void AddEdge(int u, int v) {
 			assert(u < this->n && v < this->n);
