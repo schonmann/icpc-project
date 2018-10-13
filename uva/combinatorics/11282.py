@@ -1,5 +1,3 @@
-mem = dict()
-
 def fat(n, floor):
     if n == floor: return 1
     if n == 0: return 1
