@@ -5,12 +5,12 @@ using namespace std;
 
 
 vector<int> getLIS(vector<int> numbers) {
-   vector<int> b, p (numbers.size());
-   int u, v;
+	vector<int> b, p (numbers.size());
+	int u, v;
 
-   if (numbers.size() < 1) return b;
+	if (numbers.size() < 1) return b;
 
-   b.push_back (0);
+	b.push_back (0);
 
 	for (int i = 1; i < numbers.size(); i++) {
 		if (numbers[b.back()] < numbers[i]) {
