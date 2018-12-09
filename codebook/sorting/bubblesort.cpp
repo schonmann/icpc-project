@@ -1,6 +1,13 @@
 #include <iostream>
 #include <vector>
 
+/**
+* A naive Bubblesort approach for sorting arrays.
+*
+* Time complexity: O(n^2)
+* Space complexity: O(1)
+*/
+
 using namespace std;
 
 typedef int T;

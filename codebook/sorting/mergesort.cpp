@@ -3,6 +3,13 @@
 
 using namespace std;
 
+/**
+* Mergesort algorithm.
+*
+* Time complexity: O(n log(n))
+* Space complexity: O(n)
+*/
+
 typedef int T;
 
 void merge(vector<T> &arr, int l, int m, int r) {

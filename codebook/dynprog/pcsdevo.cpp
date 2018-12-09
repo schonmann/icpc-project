@@ -2,6 +2,13 @@
 #include <vector>
 #include <map>
 
+/**
+* Calculates the number of pairs with sum 'S' within a vector.
+*
+* Time complexity: O(n)
+* Space complexity: O(1)
+*/
+
 using namespace std;
 
 typedef int T;

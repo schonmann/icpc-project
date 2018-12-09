@@ -1,6 +1,13 @@
 #include <iostream>
 #include <vector>
 
+/**
+* Quicksort algorithm.
+*
+* Time complexity: Θ(n log(n)) / O(n^2)
+* Space complexity: O(1)
+*/
+
 using namespace std;
 
 typedef int T;
