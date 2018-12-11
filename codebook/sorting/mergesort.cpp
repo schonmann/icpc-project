@@ -1,14 +1,14 @@
 #include <iostream>
 #include <vector>
 
-using namespace std;
-
 /**
 * Mergesort algorithm.
 *
 * Time complexity: O(n log(n))
 * Space complexity: O(n)
 */
+
+using namespace std;
 
 typedef int T;
 
