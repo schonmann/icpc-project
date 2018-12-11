@@ -47,7 +47,7 @@ int main(void) {
     int n; cin >> n; vector<T> v(n);
     for(int i = 0; i < n; i++) cin >> v[i];
 
-    cout << naiveMaxSubArraySum(v) << endl;
+    cout << "Sum of the maximum sum subarray: " << naiveMaxSubArraySum(v) << endl;
 
     return 0;
 }
