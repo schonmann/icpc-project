@@ -1,16 +1,16 @@
 #include <iostream>
 #include <vector>
 
-using namespace std;
-
-typedef int T;
-
 /**
 * Longest increasing subsequence dynamic programming approach with memoization.
 *
 * Time complexity: O(N^2)
 * Space complexity: O(N)
 */
+
+using namespace std;
+
+typedef int T;
 
 int lisDP(vector<T> arr) {
     vector<T> lis(arr.size());
