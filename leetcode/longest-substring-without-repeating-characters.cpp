@@ -11,13 +11,13 @@ public:
             char currentChar = s[i];
 
             map<char,int>::iterator duplicateCharIterator = indexByChar.find(currentChar);
-            bool subStringHasDuplicateChar = duplicateCharIterator != indexByChar.end() &&
+            bool substringHasDuplicateChar = duplicateCharIterator != indexByChar.end() &&
                 duplicateCharIterator->second >= startingSubStringIndex;
 
-            if (subStringHasDuplicateChar) {
+            if (substringHasDuplicateChar) {
                 bestSubStringLength = max(bestSubStringLength, subStringLength);
-                startingSubStringIndex = duplicateCharIterator->second;
-                subStringLength = i - startingSubStringIndex - 1;
+                startingSubStringIndex = duplicateCharIterator->second + 1;
+                subStringLength = i - startingSubStringIndex;
                 indexByChar.erase(currentChar);
             }
             
