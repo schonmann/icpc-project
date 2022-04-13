@@ -16,8 +16,8 @@ public:
 
             if (substringHasDuplicateChar) {
                 bestSubStringLength = max(bestSubStringLength, subStringLength);
-                startingSubStringIndex = duplicateCharIterator->second;
-                subStringLength = i - startingSubStringIndex - 1;
+                startingSubStringIndex = duplicateCharIterator->second + 1;
+                subStringLength = i - startingSubStringIndex;
                 indexByChar.erase(currentChar);
             }
             
