@@ -1,3 +1,4 @@
 # icpc-project
-Resolução dos problemas das maratona de programação.
+Solving algorithm challenges from different online judges :)
+
 ![LUL](https://i.imgur.com/3XOvDJq.png)
